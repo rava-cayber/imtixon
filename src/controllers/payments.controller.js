@@ -6,7 +6,7 @@ export const createPayment = async (req, res) => {
     if (!order_id || !amount) {
       return res.status(400).json({ message: "Hammasini to'ldiring" });
     }
-    // order_id orqali car price ni topamiz
+    
     const orderResult = await pool.query(
       `SELECT car.price FROM orders JOIN cars car ON orders.car_id = car.id WHERE orders.id = $1`,
       [order_id]
@@ -48,3 +48,4 @@ export const listPayments = async (req, res) => {
     res.status(500).json({ message: "Server error" });
   }
 };
+"params sal nito ishlayapti"
