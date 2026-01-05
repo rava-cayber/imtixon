@@ -7,7 +7,7 @@ export const createOrder = async (req, res) => {
     if (!month_count || !start_date || !end_date || !customer_id || !car_id) {
       return res.status(400).json({ message: "Hammasini to'ldiring" });
     }
-    // Agar id bo'lsa, uni ham insertga qo'shish (id autoincrement emas deb faraz qilamiz)
+    
     let rows;
     if (id) {
       const result = await pool.query(
@@ -42,7 +42,7 @@ export const listOrders = async (req, res) => {
         return res.status(404).json({ message: "Topilmadi" });
       return res.status(200).json(rows[0]);
     }
-    // params.id bo'lmasa, umumiy ro'yxat qaytarmaydi
+    
     return res.status(400).json({ message: "id kerak" });
   } catch (error) {
     console.error(error);
